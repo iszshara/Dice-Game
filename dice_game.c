@@ -6,6 +6,13 @@
 #include <sys/types.h>
 #include <string.h>
 
+int random_function(int max)
+{
+    int x = rand() % max + 1;
+    srand(getpid());
+    return x;
+}
+
 int main()
 {
     int balance = 1000;
@@ -79,8 +86,8 @@ int main()
         printf("...\n");
         sleep(1);
 
-        // Determines the number "randomly"
-        dice = rand() % 6 + 1;
+        // Determines the number randomly
+        dice = random_function(6);
 
         // examines if the user guess is correct or incorrect
         if (guess == dice)
@@ -110,10 +117,6 @@ int main()
         else if (game_end == 1)
         {
             continue;
-            // int d;
-            // while ((d = getchar()) != '\n' && c != EOF)
-            // {
-            // }
         }
     }
 }
